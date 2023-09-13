@@ -1,14 +1,14 @@
 #ifndef _DOOR_H_
 #define _DOOR_H_
 
-struct Door {
-  int doorNumber;
-  int room1;
-  int room2;
-  bool isUnlocked;
-  bool isVisible;
+#include "Room.h"
 
-  Door(int room1, int room2);
+struct Door
+{
+  Room *sourceRoom;
+  Room *targetRoom;
+
+  Door(Room *sourceRoom, Room *targetRoom);
 };
 
 #endif

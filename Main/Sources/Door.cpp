@@ -1,6 +1,8 @@
 #include "Door.h"
+#include "Room.h"
 
-Door::Door(int room1, int room2) {
-  this->room1 = room1;
-  this->room2 = room2;
+Door::Door(Room *sourceRoom, Room *targetRoom)
+{
+  this->sourceRoom = sourceRoom;
+  this->targetRoom = targetRoom;
 }
