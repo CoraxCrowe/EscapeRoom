@@ -12,8 +12,10 @@ Door *doors[][3]{
 */
 int main()
 {
-  CurrentRoom* currentRoom = new CurrentRoom(0);
-  currentRoom->debug();
+  CurrentRoom* currentRoom = new CurrentRoom(1);
+  currentRoom->checkLegalMoves();
+  currentRoom->printRoomStatus();
+  currentRoom->optionSelect();
   
   return 0;
 }

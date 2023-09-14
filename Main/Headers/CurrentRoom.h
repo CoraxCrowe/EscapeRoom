@@ -11,13 +11,17 @@ class CurrentRoom {
     Room* room;
     Room* rooms[ROOM_AMOUNT];
     Door* doors[ROOM_AMOUNT][3];
-    Room* legalmoves[3];
+    int legalmoves[3] = {-1, -1, -1};
+    int riddleInRoom[ROOM_AMOUNT];
 
+    
     CurrentRoom(int n);
 
-    void printAdjacentRooms();
+    void checkLegalMoves();
 
-    void move(int index);
+    void printRoomStatus();
+
+    void optionSelect();
 
     void debug();
 
