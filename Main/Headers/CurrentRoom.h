@@ -3,13 +3,15 @@
 
 #include "Room.h"
 #include "Door.h"
+#include "Constants.h"
 
 class CurrentRoom {
   public:
     int roomIndex;
     Room* room;
-    Room* rooms[3];
-    Door* doors[][3];
+    Room* rooms[ROOM_AMOUNT];
+    Door* doors[ROOM_AMOUNT][3];
+    Room* legalmoves[3];
 
     CurrentRoom(int n);
 

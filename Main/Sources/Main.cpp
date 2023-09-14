@@ -12,9 +12,8 @@ Door *doors[][3]{
 */
 int main()
 {
-  
   CurrentRoom* currentRoom = new CurrentRoom(0);
-  currentRoom->printAdjacentRooms();
+  currentRoom->debug();
   
   return 0;
 }
