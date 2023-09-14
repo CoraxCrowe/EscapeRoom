@@ -7,9 +7,10 @@
 class CurrentRoom {
   public:
     int roomIndex;
-    Room* room;
 
     void printAdjacentRooms(Door* doors[][3]);
+
+    void move(int index);
 };
 
 

@@ -15,6 +15,8 @@ int main()
   
   CurrentRoom* currentRoom = new CurrentRoom();
   currentRoom->printAdjacentRooms(doors);
-  std::cout << currentRoom->room;
+  currentRoom->move(1);
+  currentRoom->printAdjacentRooms(doors);
+  std::cout << rooms[currentRoom->roomIndex]->roomNumber;
   return 0;
 }
