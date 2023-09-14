@@ -6,8 +6,8 @@
 #include "Door.h"
 #include "CurrentRoom.h"
 
-extern Room* rooms[3];
-extern Door* doors[][3];
+//extern Room* rooms[3];
+//extern Door* doors[][3];
 
 
 
