@@ -6,6 +6,7 @@ Room *room = nullptr;
 Room *rooms[ROOM_AMOUNT] = {nullptr};
 Door *doors[ROOM_AMOUNT][3] = {nullptr};
 int riddleInRoom[ROOM_AMOUNT] = {0};
+Riddle* riddles[2] = {nullptr};
 
 CurrentRoom::CurrentRoom(int n)
 {
@@ -130,6 +131,9 @@ void CurrentRoom::move(int x) {
 
 void CurrentRoom::debug()
 {
-  printRoomStatus();
+  Riddle* riddle1 = new Riddle("placeholder type B", "B");
+  Riddle* riddle2 = new Riddle("placeholder type A", "A");
+  std::cout << riddle1->riddleText << ": \nsolution : " << riddle1->riddleSolution << '\n';
+  std::cout << riddle2->riddleText << ": \nsolution : " << riddle2->riddleSolution << '\n';
 
 }

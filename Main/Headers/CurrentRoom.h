@@ -1,9 +1,13 @@
 #ifndef _CURRENTROOM_H_
 #define _CURRENTROOM_H_
 
+#include "Constants.h"
+
 #include "Room.h"
 #include "Door.h"
-#include "Constants.h"
+#include "Riddle.h"
+
+
 
 class CurrentRoom {
   public:
@@ -13,6 +17,7 @@ class CurrentRoom {
     Door* doors[ROOM_AMOUNT][3];
     int legalmoves[3] = {-1, -1, -1};
     int riddleInRoom[ROOM_AMOUNT];
+    Riddle* riddles[2] = {nullptr};
 
     
     CurrentRoom(int n);
