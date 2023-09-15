@@ -121,6 +121,8 @@ void CurrentRoom::solveRiddle() {
 
 void CurrentRoom::move(int x) {
   std::cout << "Move to " << x << " called\n";
+  roomIndex = x;
+  room = rooms[x];
 }
 
 
