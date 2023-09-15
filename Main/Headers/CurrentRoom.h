@@ -25,6 +25,14 @@ class CurrentRoom {
 
     void debug();
 
+    void catchInput();
+
+    bool arrayHasItem(char input, char array[], int arraysize);
+
+    void solveRiddle();
+
+    void move(int x);
+
 
 };
 

@@ -13,9 +13,11 @@ Door *doors[][3]{
 int main()
 {
   CurrentRoom* currentRoom = new CurrentRoom(1);
+  while(true) {
   currentRoom->checkLegalMoves();
   currentRoom->printRoomStatus();
   currentRoom->optionSelect();
-  
+  currentRoom->catchInput();
+  }
   return 0;
 }

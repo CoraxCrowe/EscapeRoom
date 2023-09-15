@@ -49,21 +49,15 @@ void CurrentRoom::checkLegalMoves()
 
 void CurrentRoom::optionSelect()
 {
-  std::cout << "What's your next move?\n\n";
+  std::cout << "\n\n";
   if (riddleInRoom[roomIndex]) {
     std::cout << "Solve riddle: press S;\n";
   }
   for (int i = 0; i < 3; i++) {
     if (legalmoves[i] != -1) {
-      std::cout << "Move to room " << legalmoves[i] << ": press " << legalmoves[i];
+      std::cout << "Move to room " << legalmoves[i] << ": press " << legalmoves[i] << '\n';
     }
   }
-}
-
-void CurrentRoom::debug()
-{
-  printRoomStatus();
-
 }
 
 void::CurrentRoom::printRoomStatus()
@@ -83,3 +77,57 @@ void::CurrentRoom::printRoomStatus()
   }
 }
 
+bool CurrentRoom::arrayHasItem(char input, char array[], int arraySize) {
+  for (int i = 0; i < arraySize; i++) {
+    if (array[i] == input) {return true;}
+  }
+  return false;
+}
+
+void CurrentRoom::catchInput() {
+  char validInputs[4];
+  int arraySize = 0;
+  char userInput = 'N';
+
+  if (riddleInRoom[roomIndex]) {
+    validInputs[0] = 'S';
+    arraySize++;
+  }
+
+  for (int i = 0; i < 3; i++) {
+    if (doors[roomIndex][i] == nullptr || !doors[roomIndex][i]->isVisible) {
+      continue;
+    }
+    
+    if (doors[roomIndex][i]->isUnlocked && doors[roomIndex][i] != nullptr && doors[roomIndex][i]->isVisible) 
+    {
+      validInputs[i +1] = doors[roomIndex][i]->targetRoom->roomNumber + 48;
+      arraySize++;
+    } 
+  }
+
+  do {
+    std::cout << "Pick your next move: \n";
+    std::cin >> userInput; 
+  } while (!arrayHasItem(userInput, validInputs, arraySize));
+
+  if (userInput == 'S') {solveRiddle();}
+  else {move(userInput - 48);}
+}
+
+void CurrentRoom::solveRiddle() {
+  std::cout << "Solve Riddle called\n";
+}
+
+void CurrentRoom::move(int x) {
+  std::cout << "Move to " << x << " called\n";
+}
+
+
+
+
+void CurrentRoom::debug()
+{
+  printRoomStatus();
+
+}
