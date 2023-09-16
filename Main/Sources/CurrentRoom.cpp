@@ -48,17 +48,20 @@ CurrentRoom::CurrentRoom(int n)
   riddleInRoom[4] = 1;
   riddleInRoom[6] = 2;
 
-  riddles[0] = new Riddle("placeholder type B", "B", 3, 1, "unlock");
-  riddles[1] = new Riddle("placeholder type A", "A", 5, 1, "unlock");
-  riddles[2] = new Riddle("placeholder type C", "C", 5, 2, "discover");
+  riddles[0] = new Riddle("What color is also fruit?", "Orange", 3, 1, "unlock");
+  riddles[1] = new Riddle("What president is also a Duck?", "Donald", 5, 1, "unlock");
+  riddles[2] = new Riddle("What music genre is also a golf move?", "Swing", 5, 2, "discover");
 }
 
 void CurrentRoom::checkLegalMoves()
 {
   int temp = 0;
+  legalmoves[0] = -1;
+  legalmoves[1] = -1;
+  legalmoves[2] = -1;
   for (int i = 0; i < 3; i++)
   {
-    legalmoves[temp] = -1;
+    //legalmoves[temp] = -1;
     if (doors[roomIndex][i] == nullptr || !doors[roomIndex][i]->isVisible)
     {
       continue;
@@ -84,8 +87,9 @@ void CurrentRoom::optionSelect()
   }
 }
 
-void ::CurrentRoom::printRoomStatus()
+void CurrentRoom::printRoomStatus()
 {
+  std::cout << "ROOM: " << roomIndex << "\n\n";
   for (int i = 0; i < 3; i++)
   {
     if (doors[roomIndex][i] == nullptr || !doors[roomIndex][i]->isVisible)
@@ -166,6 +170,8 @@ void CurrentRoom::solveRiddle()
             << currentRiddle->riddleText << "\n\n";
   std::cout << "Your answer: ";
   std::cin >> tempAnswer;
+
+  
   if (tempAnswer == currentRiddle->riddleSolution)
   {
     std::cout << "You hear a clicking sound...\nThe door in room " << currentRiddle->indexRoom;
@@ -178,7 +184,9 @@ void CurrentRoom::solveRiddle()
     {
       doors[currentRiddle->indexRoom][currentRiddle->indexDoor]->isVisible = true;
       std::cout << " was revealed!\n";
+      
     }
+    riddleInRoom[roomIndex] = -1;
     return;
   }
   std::cout << "Nothing happens, the answer must be wrong...\n\n";
@@ -189,6 +197,19 @@ void CurrentRoom::move(int x)
   std::cout << "You move to room " << x << "\n";
   roomIndex = x;
   room = rooms[x];
+}
+
+void CurrentRoom::startGame() {
+  std::cout << "Welcome to the dungeon of rooms. The rooms here have doors.\nHave fun.\n";
+}
+
+bool CurrentRoom::endGame() {
+  if (roomIndex == 7) 
+  {
+    std::cout << "You have reached the room of Winning The Game.\nCongrats.\n";
+    return false;
+  }
+  return true;
 }
 
 void CurrentRoom::debug()

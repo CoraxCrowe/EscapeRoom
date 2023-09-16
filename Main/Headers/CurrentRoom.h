@@ -35,6 +35,11 @@ public:
   void solveRiddle();
 
   void move(int x);
+  
+  void startGame();
+
+  bool endGame();
+
 };
 
 #endif
