@@ -4,8 +4,6 @@
 Room *sourceRoom = nullptr;
 Room *targetRoom = nullptr;
 
-
-
 Door::Door(Room *sourceRoom, Room *targetRoom)
 {
   this->sourceRoom = sourceRoom;

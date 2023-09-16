@@ -7,39 +7,34 @@
 #include "Door.h"
 #include "Riddle.h"
 
+class CurrentRoom
+{
+public:
+  int roomIndex;
+  Room *room;
+  Room *rooms[ROOM_AMOUNT];
+  Door *doors[ROOM_AMOUNT][3];
+  int legalmoves[3] = {-1, -1, -1};
+  int riddleInRoom[ROOM_AMOUNT];
+  Riddle *riddles[2] = {nullptr};
 
+  CurrentRoom(int n);
 
-class CurrentRoom {
-  public:
-    int roomIndex;
-    Room* room;
-    Room* rooms[ROOM_AMOUNT];
-    Door* doors[ROOM_AMOUNT][3];
-    int legalmoves[3] = {-1, -1, -1};
-    int riddleInRoom[ROOM_AMOUNT];
-    Riddle* riddles[2] = {nullptr};
+  void checkLegalMoves();
 
-    
-    CurrentRoom(int n);
+  void printRoomStatus();
 
-    void checkLegalMoves();
+  void optionSelect();
 
-    void printRoomStatus();
+  void debug();
 
-    void optionSelect();
+  void catchInput();
 
-    void debug();
+  bool arrayHasItem(char input, char array[], int arraysize);
 
-    void catchInput();
+  void solveRiddle();
 
-    bool arrayHasItem(char input, char array[], int arraysize);
-
-    void solveRiddle();
-
-    void move(int x);
-
-
+  void move(int x);
 };
-
 
 #endif

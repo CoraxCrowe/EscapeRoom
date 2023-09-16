@@ -4,14 +4,13 @@
 
 int main()
 {
-  CurrentRoom* currentRoom = new CurrentRoom(1);
-  while(true) {
-  currentRoom->checkLegalMoves();
-
-  currentRoom->printRoomStatus();
-  currentRoom->optionSelect();
-  currentRoom->catchInput();
-  currentRoom->debug();
+  CurrentRoom *currentRoom = new CurrentRoom(0);
+  while (true)
+  {
+    currentRoom->checkLegalMoves();
+    currentRoom->printRoomStatus();
+    currentRoom->optionSelect();
+    currentRoom->catchInput();
   }
   return 0;
 }
